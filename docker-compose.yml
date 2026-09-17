@@ -1,0 +1,10 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env          # DHAN_CLIENT_ID / DHAN_ACCESS_TOKEN — never committed
+    volumes:
+      - ./data:/app/data   # persists the SQLite trade journal across restarts
+    restart: unless-stopped
